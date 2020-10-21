@@ -1,4 +1,4 @@
-package com.StepDefinitionClasses1;
+package com.StepDefinitionClasses2;
 
 import org.junit.Assert;
 
@@ -8,31 +8,32 @@ import cucumber.api.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-public class latestFXR {
-	
+public class LatestFXRResponse {
 	Response res;
 	
-	@Given("^Rates API for Latest Foreign Exchange rates$")
+	@Given("^Rates API for Latest Foreign Exchange rates to check response$")
 	public void buildAPI() throws Throwable {
 	 
 	//setting up the baseURI
 	RestAssured.baseURI="https://api.ratesapi.io";
 	}
 
-	@When("^The API is available$")
+	@When("^The API is available to check reponse$")
 	public void invokeAPI() throws Throwable {
 	
 		//hitting the api using get method by providing base path
 		res= RestAssured.get("/api/latest");
 	}
 
-	@Then("^verify that the status code of the response is Success$")
+	@Then("^verify that response contains all currencies$")
 	public void validate() throws Throwable {
 	    
-		//print the response status code 
-		System.out.println("Status code of the response is : "+res.getStatusCode());
-		//validating that it is 200
-		Assert.assertEquals(200, res.getStatusCode() );
+		//converting response body in string
+		String ResString= res.getBody().asString();
+		//printing the string response
+		System.out.println("Response body is :" +ResString);
+		//verify that the string length is 467, confirms that all currency values are returned
+		Assert.assertEquals(467, ResString.length());
 	
 	}
 

@@ -8,10 +8,9 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions (
 	
-	features="/Cucumberr/Features/AcceptanceCriteria2.feature",
-	glue= {"/Cucumberr/src/main/java/com/StepDefinitionClasses2"},
-	plugin = { "pretty", "html:target/htmlreports" }
-
+	features="Features/AcceptanceCriteria4.feature",
+	glue= {"com.StepDefinitionClasses4"}
+	
 )
 
 public class testRunner {

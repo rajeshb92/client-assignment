@@ -1,10 +1,10 @@
-@AC1
+
 Feature: Test the success status of latest foreign exchange rates api
    
     Scenario: Assert the success status of Latest foreign exchange api response 
     Given Rates API for Latest Foreign Exchange rates
     When The API is available
-    Then verify that the status of the response is Success
+    Then verify that the status code of the response is Success
         
     Scenario: Assert the success status of response for Latest foreign exchange api with symbol 
     Given Rates API for Latest Foreign Exchange rates with symbol
