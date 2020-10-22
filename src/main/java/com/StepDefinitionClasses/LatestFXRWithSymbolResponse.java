@@ -1,10 +1,9 @@
-package com.StepDefinitionClasses2;
+package com.StepDefinitionClasses;
 
 import java.util.List;
 
 import org.junit.Assert;
 
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -39,13 +38,5 @@ public class LatestFXRWithSymbolResponse {
 			Assert.assertEquals("EUR", base);
 		
 		}
-		
-		@And("^response contains currency value only for symbol parameter mentioned in api$")
-		public void validateHTTPVersion() throws Throwable {
-		    //printing currency list as a string
-			System.out.println("Currency list returned is :"+res1.jsonPath().get("rates").toString());
-			//verifying that it just has USD
-			Assert.assertEquals("{USD=1.181}",res1.jsonPath().get("rates").toString());
-				
-		}
+			
 }

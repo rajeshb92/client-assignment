@@ -1,4 +1,4 @@
-package com.StepDefinitionClasses4;
+package com.StepDefinitionClasses;
 
 import org.junit.Assert;
 
@@ -8,24 +8,25 @@ import cucumber.api.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-public class SpecificDateFXR {
-    Response res;
+public class latestFXR {
 	
-	@Given("^Rates API for specific date foreign exchange rates$")
+	Response res;
+	
+	@Given("^Rates API for Latest Foreign Exchange rates$")
 	public void buildAPI() throws Throwable {
 	 
 	//setting up the baseURI
 	RestAssured.baseURI="https://api.ratesapi.io";
 	}
 
-	@When("^The specific date FXR API is available$")
+	@When("^The API is available$")
 	public void invokeAPI() throws Throwable {
 	
 		//hitting the api using get method by providing base path
-		res= RestAssured.get("/api/2020-10-19");
+		res= RestAssured.get("/api/latest");
 	}
 
-	@Then("^verify that the status code of the response is 200$")
+	@Then("^verify that the status code of the response is Success$")
 	public void validate() throws Throwable {
 	    
 		//print the response status code 
@@ -34,4 +35,5 @@ public class SpecificDateFXR {
 		Assert.assertEquals(200, res.getStatusCode() );
 	
 	}
+
 }

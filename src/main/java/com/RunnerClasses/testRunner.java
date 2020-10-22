@@ -8,8 +8,8 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions (
 	
-	features="Features/AcceptanceCriteria4.feature",
-	glue= {"com.StepDefinitionClasses4"}
+	features="Features",
+	glue= {"com.StepDefinitionClasses"}
 	
 )
 

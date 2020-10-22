@@ -1,14 +1,10 @@
-package com.StepDefinitionClasses2;
-
-
-
+package com.StepDefinitionClasses;
 import org.junit.Assert;
 
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import io.cucumber.core.gherkin.messages.internal.gherkin.internal.com.eclipsesource.json.JsonObject;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
@@ -16,8 +12,7 @@ public class LatestFXRWithSymbolAndBaseResponse {
 	//creating response object to store response
 			Response res1;
 			String base;
-			JsonObject val;
-			
+						
 			@Given("^Rates API for Latest Foreign Exchange rates with Symbol & base to check response$")
 			public void buildAPI() throws Throwable {
 				//setting up the baseURI

@@ -1,4 +1,4 @@
-package com.StepDefinitionClasses1;
+package com.StepDefinitionClasses;
 
 import org.junit.Assert;
 

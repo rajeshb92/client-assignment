@@ -1,4 +1,4 @@
-package com.StepDefinitionClasses2;
+package com.StepDefinitionClasses;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,14 +19,15 @@ public class LatestFXRWithBaseResponse {
 			//creating response object to store response
 			Response res2;
 			String date,base;
-			//computing yesterday's date
+			//computing current date
+			//Due to timezone difference, treating DATE-1 as current date
 			private Date yesterday() {
 			    final Calendar cal = Calendar.getInstance();
 			    cal.add(Calendar.DATE, -1);
 			    return cal.getTime();
 			}
 			
-			private String getYesterdayDateString() {
+			private String getCurrentDateString() {
 		        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		        return dateFormat.format(yesterday());
 			}
@@ -44,12 +45,12 @@ public class LatestFXRWithBaseResponse {
 				res2= RestAssured.get("/api/latest?base=USD");
 			}
 
-			@Then("^verify that the response has yesterday's date$")
+			@Then("^verify that the response has current date$")
 			public void validate() throws Throwable {
 			    date=res2.jsonPath().get("date");
 				System.out.println("Date in the response is :"+date);
 				//verifying the date is yesterday's
-				Assert.assertEquals(getYesterdayDateString(),date);
+				Assert.assertEquals(getCurrentDateString(),date);
 			
 			}
 			
