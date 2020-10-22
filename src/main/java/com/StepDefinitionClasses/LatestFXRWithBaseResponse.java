@@ -1,10 +1,5 @@
 package com.StepDefinitionClasses;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 import org.junit.Assert;
 
 import cucumber.api.java.en.And;
@@ -18,21 +13,8 @@ public class LatestFXRWithBaseResponse {
 	
 			//creating response object to store response
 			Response res2;
-			String date,base;
-			//computing current date
-			//Due to timezone difference, treating DATE-1 as current date
-			private Date yesterday() {
-			    final Calendar cal = Calendar.getInstance();
-			    cal.add(Calendar.DATE, -1);
-			    return cal.getTime();
-			}
-			
-			private String getCurrentDateString() {
-		        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		        return dateFormat.format(yesterday());
-			}
-			
-			
+			String date,base,currentDate;
+					
 			@Given("^Rates API for Latest Foreign Exchange rates with base to check response$")
 			public void buildAPI() throws Throwable {
 				//setting up the baseURI
@@ -49,8 +31,9 @@ public class LatestFXRWithBaseResponse {
 			public void validate() throws Throwable {
 			    date=res2.jsonPath().get("date");
 				System.out.println("Date in the response is :"+date);
-				//verifying the date is yesterday's
-				Assert.assertEquals(getCurrentDateString(),date);
+				//verifying the date is current
+				currentDate=commonResources.Respos.getTodayDateString();
+				Assert.assertEquals(currentDate,date);
 			
 			}
 			
@@ -60,7 +43,7 @@ public class LatestFXRWithBaseResponse {
 				base=res2.jsonPath().get("base");
 				//printing the base currency present in api response
 				System.out.println("Base currency present in response is :"+base);
-				//verifying that it is EUR
+				//verifying that it is USD
 				Assert.assertEquals("USD", base);
 			}
 

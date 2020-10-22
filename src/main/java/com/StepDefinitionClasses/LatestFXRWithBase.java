@@ -17,7 +17,7 @@ public class LatestFXRWithBase {
 		@Given("^Rates API for Latest Foreign Exchange rates with base$")
 		public void buildAPI() throws Throwable {
 			//setting up the baseURI
-			RestAssured.baseURI="https://api.ratesapi.io";
+			RestAssured.baseURI=commonResources.Respos.b1;
 		}
 
 		@When("^The API with base is available$")

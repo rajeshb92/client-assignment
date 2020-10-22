@@ -15,7 +15,7 @@ public class SpecificDateFXRWithSymbolResponse {
 			@Given("^Rates API for specific date Foreign Exchange rates with symbol to check response$")
 			public void buildAPI() throws Throwable {
 				//setting up the baseURI
-				RestAssured.baseURI="https://api.ratesapi.io";
+				RestAssured.baseURI=commonResources.Respos.b1;
 			}
 
 			@When("^The specific date foreign exchage API with symbol is available to check response$")

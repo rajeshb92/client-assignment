@@ -1,7 +1,5 @@
 package com.StepDefinitionClasses;
 
-import java.util.List;
-
 import org.junit.Assert;
 
 import cucumber.api.java.en.Given;
@@ -14,12 +12,11 @@ public class LatestFXRWithSymbolResponse {
 	//creating response object to store response
 		Response res1;
 		String base;
-		List<String> currencyList;
-		
+				
 		@Given("^Rates API for Latest Foreign Exchange rates with symbol to check response$")
 		public void buildAPI() throws Throwable {
 			//setting up the baseURI
-			RestAssured.baseURI="https://api.ratesapi.io";
+			RestAssured.baseURI=commonResources.Respos.b1;
 		}
 
 		@When("^The API with symbol is available to check response$")

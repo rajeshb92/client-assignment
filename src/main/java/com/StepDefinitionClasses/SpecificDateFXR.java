@@ -10,19 +10,21 @@ import io.restassured.response.Response;
 
 public class SpecificDateFXR {
     Response res;
+    String currentDate;
 	
 	@Given("^Rates API for specific date foreign exchange rates$")
 	public void buildAPI() throws Throwable {
 	 
 	//setting up the baseURI
-	RestAssured.baseURI="https://api.ratesapi.io";
+	RestAssured.baseURI=commonResources.Respos.b1;
 	}
 
 	@When("^The specific date FXR API is available$")
 	public void invokeAPI() throws Throwable {
 	
 		//hitting the api using get method by providing base path
-		res= RestAssured.get("/api/2020-10-19");
+		currentDate=commonResources.Respos.getTodayDateString();
+		res= RestAssured.get("/api/"+currentDate);
 	}
 
 	@Then("^verify that the status code of the response is 200$")

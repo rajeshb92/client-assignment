@@ -19,7 +19,7 @@ public class SpecificDateFXRResponse {
 	public void buildAPI() throws Throwable {
 	 
 	//setting up the baseURI
-	RestAssured.baseURI="https://api.ratesapi.io";
+	RestAssured.baseURI=commonResources.Respos.b1;
 	}
 
 	@When("^The specific date foreign exchange API is available to check reponse$")
@@ -37,7 +37,7 @@ public class SpecificDateFXRResponse {
 		//printing the string response
 		System.out.println("Response body is :" +ResString);
 		//verify that the response string is not empty
-		Assert.assertEquals(false, ResString.isEmpty());
+		Assert.assertEquals(false, ResString.isBlank());
 		
 	
 	}

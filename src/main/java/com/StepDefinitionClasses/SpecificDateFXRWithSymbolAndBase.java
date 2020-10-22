@@ -12,17 +12,18 @@ public class SpecificDateFXRWithSymbolAndBase {
 	
 			//creating response object to store response
 			Response res1;
+			String currentDate;
 			
 			@Given("^Rates API for specific date Foreign Exchange rates with Symbol & base$")
 			public void buildAPI() throws Throwable {
 				//setting up the baseURI
-				RestAssured.baseURI="https://api.ratesapi.io";
+				RestAssured.baseURI=commonResources.Respos.b1;
 			}
 
 			@When("The specific date FXR API with Symbol & base is available$")
 			public void invokeAPI() throws Throwable {
-				
-				res1= RestAssured.get("/api/2010-10-18?base=INR&symbols=GBP,USD");
+				currentDate=commonResources.Respos.getTodayDateString();
+				res1= RestAssured.get("/api/"+currentDate+"?base=INR&symbols=GBP,USD");
 				
 			}
 

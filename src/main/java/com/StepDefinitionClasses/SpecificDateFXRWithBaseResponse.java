@@ -17,7 +17,7 @@ public class SpecificDateFXRWithBaseResponse {
 	@Given("^Rates API for specific date foreign exchage rates with base to check response$")
 	public void buildAPI() throws Throwable {
 		//setting up the baseURI
-		RestAssured.baseURI="https://api.ratesapi.io";
+		RestAssured.baseURI=commonResources.Respos.b1;
 	}
 
 	@When("^The specific date foreign exchage API with base is available to check response$")
@@ -30,7 +30,7 @@ public class SpecificDateFXRWithBaseResponse {
 	public void validate() throws Throwable {
 	    date=res2.jsonPath().get("date");
 		System.out.println("Date in the response is :"+date);
-		//verifying the date is yesterday's
+		//verifying the date is current
 		Assert.assertEquals(currentDate,date);
 	
 	}
@@ -41,7 +41,7 @@ public class SpecificDateFXRWithBaseResponse {
 		base=res2.jsonPath().get("base");
 		//printing the base currency present in api response
 		System.out.println("Base currency present in response is :"+base);
-		//verifying that it is EUR
+		//verifying that it is USD
 		Assert.assertEquals("USD", base);
 	}
 

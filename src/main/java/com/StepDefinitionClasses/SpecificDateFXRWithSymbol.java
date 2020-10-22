@@ -12,17 +12,17 @@ import io.restassured.response.Response;
 public class SpecificDateFXRWithSymbol {
 	    //creating response object to store response
 		Response res1;
-		
+		String currentDate;
 		@Given("^Rates API for specific date Foreign Exchange rates with symbol$")
 		public void buildAPI() throws Throwable {
 			//setting up the baseURI
-			RestAssured.baseURI="https://api.ratesapi.io";
+			RestAssured.baseURI=commonResources.Respos.b1;
 		}
 
 		@When("^The specific date FXR API with symbol is available$")
 		public void invokeAPI() throws Throwable {
-		
-			res1= RestAssured.get("/api/2020-10-19?symbols=USD");
+			currentDate=commonResources.Respos.getTodayDateString();
+			res1= RestAssured.get("/api/"+currentDate+"?symbols=USD");
 		}
 
 		@Then("^verify that the response status code of specific date FXR API with symbol is 200$")

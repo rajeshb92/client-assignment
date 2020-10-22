@@ -9,7 +9,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class FutureDateAPIResponse {
-		//creating response object to store response
+		
 		Response res1;
 		String date,futureDate,currentDate;
 		
@@ -17,13 +17,13 @@ public class FutureDateAPIResponse {
 		@Given("^Rates API for specific date foreign exchage rates with Symbol & base to check date in response$")
 		public void buildAPI() throws Throwable {
 			//setting up the baseURI
-			RestAssured.baseURI="https://api.ratesapi.io";
+			RestAssured.baseURI=commonResources.Respos.b1;
 		}
 
 		@When("The specific date foreign exchage API with future date is available$")
 		public void invokeAPI() throws Throwable {
-			futureDate=commonResources.Respos.getFutureDayDateString();
 			//providing future date as param
+			futureDate=commonResources.Respos.getFutureDayDateString();
 			res1= RestAssured.get("/api/"+futureDate+"?base=USD&symbols=GBP");
 			
 		}

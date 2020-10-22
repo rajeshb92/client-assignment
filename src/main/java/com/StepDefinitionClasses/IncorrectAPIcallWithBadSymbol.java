@@ -16,7 +16,7 @@ public class IncorrectAPIcallWithBadSymbol {
 	@Given("^Incorrect Rates API for Latest Foreign Exchange rate$")
 	public void build() throws Throwable {
 		//setting up the baseURI
-		RestAssured.baseURI="https://api.ratesapi.io";	    
+		RestAssured.baseURI=commonResources.Respos.b1;	    
 	}
 
 	@When("^The API does not have valid symbol$")

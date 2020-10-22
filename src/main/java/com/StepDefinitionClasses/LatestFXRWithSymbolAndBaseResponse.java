@@ -16,7 +16,7 @@ public class LatestFXRWithSymbolAndBaseResponse {
 			@Given("^Rates API for Latest Foreign Exchange rates with Symbol & base to check response$")
 			public void buildAPI() throws Throwable {
 				//setting up the baseURI
-				RestAssured.baseURI="https://api.ratesapi.io";
+				RestAssured.baseURI=commonResources.Respos.b1;
 			}
 
 			@When("The API with Symbol & base is available to check response$")
@@ -32,7 +32,7 @@ public class LatestFXRWithSymbolAndBaseResponse {
 				base=res1.jsonPath().get("base");
 				//printing the base currency present in api response
 				System.out.println("Base currency present in response is :"+base);
-				//verifying that it is EUR
+				//verifying that it is USD
 				Assert.assertEquals("USD", base);
 				
 			}

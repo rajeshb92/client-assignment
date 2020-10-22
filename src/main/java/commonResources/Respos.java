@@ -7,6 +7,8 @@ import java.util.Date;
 
 public class Respos {
 	
+			public static String b1="https://api.ratesapi.io";
+	
 			//computing current date
 			//Due to timezone difference, treating DATE-1 as current date
 			public static Date day() {
