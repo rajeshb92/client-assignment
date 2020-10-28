@@ -21,10 +21,10 @@ public class LatestFXRWithBaseResponse {
 				RestAssured.baseURI="https://api.ratesapi.io";
 			}
 
-			@When("^The API with base is available to check response$")
-			public void invokeAPI() throws Throwable {
+			@When("^The API with \"([^\"]*)\" is available to check response$")
+			public void invokeAPI(String b) throws Throwable {
 			
-				res2= RestAssured.get("/api/latest?base=USD");
+				res2= RestAssured.get("/api/latest?base="+b);
 			}
 
 			@Then("^verify that the response has current date$")
@@ -37,14 +37,14 @@ public class LatestFXRWithBaseResponse {
 			
 			}
 			
-			@And("^response has base currency same as the base parameter mentioned in api$")
-			public void validateHTTPVersion() throws Throwable {
+			@And("^response has base currency same as the \"([^\"]*)\" parameter mentioned in api$")
+			public void validateBase(String b) throws Throwable {
 			    
 				base=res2.jsonPath().get("base");
 				//printing the base currency present in api response
 				System.out.println("Base currency present in response is :"+base);
-				//verifying that it is USD
-				Assert.assertEquals("USD", base);
+				//verifying that it is correct
+				Assert.assertEquals(b, base);
 			}
 
 }

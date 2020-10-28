@@ -19,10 +19,10 @@ public class LatestFXRWithSymbolAndBase {
 			RestAssured.baseURI=commonResources.Respos.b1;
 		}
 
-		@When("The API with Symbol & base is available$")
-		public void invokeAPI() throws Throwable {
+		@When("The API with \"([^\"]*)\" & \"([^\"]*)\" is available$")
+		public void invokeAPI(String s, String b) throws Throwable {
 			
-			res1= RestAssured.get("/api/latest?base=USD&symbols=GBP");
+			res1= RestAssured.get("/api/latest?base="+b+"&symbols="+s);
 			
 		}
 

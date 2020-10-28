@@ -6,8 +6,11 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Respos {
-	
+			//setting up base URI
 			public static String b1="https://api.ratesapi.io";
+			
+			//Storing no. of currencies returned in API response
+			public static int currencyCount=32;
 	
 			//computing current date
 			//Due to timezone difference, treating DATE-1 as current date
